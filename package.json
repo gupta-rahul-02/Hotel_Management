@@ -1,0 +1,19 @@
+{
+  "name": "hotel_management",
+  "version": "1.0.0",
+  "description": "Hotel management project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gupta-rahul-02/Hotel_Management.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gupta-rahul-02/Hotel_Management/issues"
+  },
+  "homepage": "https://github.com/gupta-rahul-02/Hotel_Management#readme"
+}
