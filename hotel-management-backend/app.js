@@ -35,6 +35,8 @@ app.use(express.urlencoded({extended:true}))
 // //morgan middleware
 // app.use(morgan("tiny"))
 
+
+
 app.get("/",async (req,res) =>{
     // console.log(pool.request().query('select * from users'));
 let result = await pool.request().query('select rooms.roomno from booking inner join bookingDetails on bookingDetails.bookingid = booking.bookingid inner join rooms on bookingDetails.roomid = rooms.roomid');
