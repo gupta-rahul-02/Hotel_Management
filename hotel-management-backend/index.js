@@ -1,7 +1,8 @@
 
 const app = require('./app');
-const {pool} = require('./database-connection');
+const {connect} = require('./database-connection');
 
+// const con = pool.request()
 
 
 //connection with DB
@@ -11,7 +12,7 @@ const {pool} = require('./database-connection');
 //cloudinary config
 
 
-app.listen(process.env.PORT , ()=>{
+app.listen(process.env.PORT ,async ()=>{
     console.log(`Serving is running at port : ${process.env.PORT}`);
-   pool.connect().then(()=>console.log(`connected to db`))
+  await connect().then(()=>console.log(`connected to db`))
 })

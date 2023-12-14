@@ -1,27 +1,26 @@
 const mssql = require('mssql');
 
-exports.pool = new mssql.ConnectionPool({
-    server: 'localhost',
-    user: 'pduser',
-    password: 'pduser',
-    database:'hm',
-    port:1433,
-    options: {
-        trustServerCertificate: true,
-      }
+const dbconfig = {
+  server: 'localhost',
+  user: 'pduser',
+  password: 'PDUser',
+  database:'hm',
+  port:1433,
+  options: {
+      trustServerCertificate: true,
+    }
 
-})
-
-// const connection = () =>{
-//     pool.connect().then(() =>{
-//         console.log('connected')
-//     })
-// }
-
-// exports.con = pool
+}
 
 
+exports.connect = async() => {
+  const pool = await mssql.connect(dbconfig);
+  return pool;
+}
 
+exports.sql =async (queryString) => {
+ const pool = new mssql.ConnectionPool(dbconfig)
 
-// module.exports = {connection, pool}
-// module.exports = connection
+return (await (await pool.connect()).query(queryString)).recordsets[0]
+
+}
