@@ -12,7 +12,10 @@ res.send('test route')
 })
 
 const room = require('./routes/room.route')
+const role = require('./routes/roles.route')
 
 app.use('/api/v1/room',room)
+app.use('/api/v1/role',role)
+
 
 module.exports = app;
