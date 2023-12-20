@@ -6,13 +6,21 @@ exports.getAllRoles = async(req,res) =>{
     res.json(allRoles)
 }
 
-exports.addRole = async(req, res) =>{ 
-    let {name} = req.body
-    let role =  new Role(name) 
-    role = await role.save()
+// exports.addRole = async(req, res) =>{ 
+//     let {name} = req.body
+//     let role =  new Role(name) 
+//     role = await role.save()
     
-    res.status(200).json({msg:'Role created'})
+//     res.status(200).json({msg:'Role created'})
+// }
+
+exports.addRole = async(req, res) =>{
+    let role =  new Role(req.body)
+    role = await role.save(req.body)
+    res.status(200).json({msg:"Role created"})
 }
+
+
 
 exports.updateRole = async(req, res) =>{
     await Role.update(req.body)

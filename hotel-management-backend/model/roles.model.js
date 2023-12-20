@@ -6,12 +6,12 @@ class Role {
     this.name = name,
     this.active = active
   }
-   save() {
-    sql(
-      `INSERT INTO roles(name,updated)
-       VALUES ('${this.name}',GETDATE())`
-    );
+  
+  save(insertData){
+    let query  =  QueryGetter.insertQuery(insertData)
+    sql(query)
   }
+
   static getRoles() {
     let allRoles = sql("select * from roles");
     return allRoles;

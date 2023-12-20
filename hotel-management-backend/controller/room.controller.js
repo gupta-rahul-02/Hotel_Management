@@ -8,8 +8,19 @@ exports.getAllRooms = async(req,res) =>{
 }
 
 exports.addRoom = async(req,res) =>{
-    const {roomId, name, description, capacity, roomNo} = req.body
-    console.log(req.body.roomId)
-    let room = await Room.save(roomId,name,description,capacity,roomNo)
+    const { name, description, capacity, roomNo} = req.body
+    console.log(req.body)
+    // let room = await Room.save()
+    let room = await Room.save(name,description,capacity,roomNo)
     res.json(room)
+}
+
+exports.addRoomTest = async(req,res) =>{
+    await Room.saveTest(req.body)
+    res.status(200).json({msg:'Room added using test'})
+}
+
+exports.updateRoom = async(req,res) =>{
+    await Room.update(req.body)
+    res.status(201).json({msg:'room updated'})
 }
